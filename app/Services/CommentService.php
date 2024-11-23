@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\File;
 use function App\Utils\randomFileName;
 
 class CommentService{
+    public static function findComment($commentId){
+        return CommentRepo::findCommentById($commentId);
+    }
+    
     public static function getAllComments($postId){
         $post = PostRepo::findPostById($postId);
         if(!$post){
