@@ -10,6 +10,10 @@ use Illuminate\Support\Str;
 use function App\Utils\randomFileName;
 
 class PostService{
+    public static function findPost($postId){
+        return PostRepo::findPostById($id);
+    }
+    
     public static function getAllPosts(){
         return response()->json([
             'message' => 'Success',
