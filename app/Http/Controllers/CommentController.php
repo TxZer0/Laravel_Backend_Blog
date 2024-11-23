@@ -25,7 +25,7 @@ class CommentController extends Controller
 
     public function update(Request $request, string $commentId)
     {
-        $comment = CommentRepo::findCommentById($commentId);
+        $comment = CommentService::findComment($commentId);
         if(!$comment){
             return response()->json([
                 'message' => 'Not found'
@@ -39,7 +39,7 @@ class CommentController extends Controller
 
     public function destroy(string $commentId)
     {
-        $comment = CommentRepo::findCommentById($commentId);
+        $comment = CommentService::findComment($commentId);
         if(!$comment){
             return response()->json([
                 'message' => 'Not found'
@@ -51,7 +51,7 @@ class CommentController extends Controller
     }
 
     public function upload(FileUploadRequest $request, $commentId){
-        $comment = CommentRepo::findCommentById($commentId);
+        $comment = CommentService::findComment($commentId);
         if(!$comment){
             return response()->json([
                 'message' => 'Not found'
