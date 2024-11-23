@@ -30,7 +30,7 @@ class PostController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $post = PostRepo::findPostById($id);
+        $post = PostService::findPost($id);
         if(!$post){
             return response()->json([
                 'message' => 'Not found'
@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function destroy(string $id)
     {
-        $post = PostRepo::findPostById($id);
+        $post = PostService::findPost($id);
         if(!$post){
             return response()->json([
                 'message' => 'Not found'
@@ -54,7 +54,7 @@ class PostController extends Controller
     }
 
     public function upload(FileUploadRequest $request,string $postId){
-        $post = PostRepo::findPostById($postId);
+        $post = PostService::findPost($id);
         if(!$post){
             return response()->json([
                 'message' => 'Not found'
@@ -65,7 +65,7 @@ class PostController extends Controller
     }
 
     public function publish(string $postId){
-        $post = PostRepo::findPostById($postId);
+        $post = PostService::findPost($id);
         if(!$post){
             return response()->json([
                 'message' => 'Not found'
